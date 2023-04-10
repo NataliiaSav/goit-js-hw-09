@@ -34,3 +34,8 @@ img {
   font-size: 14px;
   text-align: center;
 }
+.value:not(:last-child)::after {
+  content: ':';
+  position: absolute;
+  right: -15px;
+}

@@ -10,8 +10,7 @@ const currentData = Date.now();
 const initData = null;
 
 buttonStart.addEventListener('click', onTimerStart);
-
-function onTimerStart() {}
+buttonStart.disabled = true;
 
 const options = {
   enableTime: true,
@@ -19,10 +18,17 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
-    console.log(selectedDates[0]);
+    initData = selectedDates[0];
+    if (initData < currentData) {
+      window.alert('Please choose a date in the future');
+    } else {
+      buttonStart.disabled = false;
+    }
+    // console.log(selectedDates[0]);
   },
 };
 flatpickr('#datetime-picker', options);
+function onTimerStart() {}
 
 function convertMs(ms) {
   // Number of milliseconds per unit of time
