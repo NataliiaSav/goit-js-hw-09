@@ -13,15 +13,9 @@ buttonStart.addEventListener('click', () => {
   timerId = setInterval(() => {
     bodyEl.style.backgroundColor = getRandomHexColor();
   }, 1000);
-  buttonStart.setAttribute('disabled', 'disabled');
+  buttonStart.setAttribute('disabled', true);
   buttonStop.removeAttribute('disabled');
 });
-
-// startBtn.addEventListener('click', () => {
-//   timerId = setInterval(() => {
-//     console.log(`I love async JS!  ${Math.random()}`);
-//   }, 1000);
-// });
 
 buttonStop.addEventListener('click', () => {
   clearInterval(timerId);
