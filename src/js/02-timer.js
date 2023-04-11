@@ -32,20 +32,20 @@ const options = {
 flatpickr('#datetime-picker', options);
 
 function onTimerStart() {
-  let selectData = new Date(input.value).getTime();
-  // console.log(selectData);
-  let deltaTime = selectData - currentData;
+  timerId = setInterval(() => {
+    let selectData = new Date(input.value).getTime();
+    let deltaTime = selectData - currentData;
+    // console.log(currentData);
+    // console.log(selectData);
+    dataDays.textContent = addLeadingZero(convertMs(deltaTime).days);
+    dataHours.textContent = addLeadingZero(convertMs(deltaTime).hours);
+    dataMinutes.textContent = addLeadingZero(convertMs(deltaTime).minutes);
+    dataSeconds.textContent = addLeadingZero(convertMs(deltaTime).seconds);
 
-  if (deltaTime > 0) {
-    timerId = setInterval(() => {
-      dataDays.textContent = addLeadingZero(convertMs(deltaTime).days);
-      dataHours.textContent = addLeadingZero(convertMs(deltaTime).hours);
-      dataMinutes.textContent = addLeadingZero(convertMs(deltaTime).minutes);
-      dataSeconds.textContent = addLeadingZero(convertMs(deltaTime).seconds);
-    }, 1000);
-  } else {
-    clearInterval(timerId);
-  }
+    if (deltaTime < 1000) {
+      clearInterval(timerId);
+    }
+  }, 1000);
 }
 function convertMs(ms) {
   const second = 1000;
