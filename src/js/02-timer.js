@@ -34,7 +34,7 @@ flatpickr('#datetime-picker', options);
 function onTimerStart() {
   timerId = setInterval(() => {
     let selectData = new Date(input.value).getTime();
-    let deltaTime = selectData - currentData;
+    let deltaTime = selectData - Date.now();
     // console.log(currentData);
     // console.log(selectData);
     dataDays.textContent = addLeadingZero(convertMs(deltaTime).days);
