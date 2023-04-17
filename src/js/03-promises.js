@@ -5,7 +5,7 @@ const delayFirst = document.querySelector('[name="delay"]');
 const step = document.querySelector('[name="step"]');
 const amount = document.querySelector('[name="amount"]');
 
-form.addEventListener('click', getPromises);
+form.addEventListener('submit', getPromises);
 
 function getPromises(event) {
   event.preventDefault();
