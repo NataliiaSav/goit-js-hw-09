@@ -24,6 +24,7 @@ function getPromises(event) {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
   }
+  event.currentTarget.reset();
 }
 
 function createPromise(position, delay) {

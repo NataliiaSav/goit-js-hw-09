@@ -2,7 +2,7 @@ const buttonStart = document.querySelector('[data-start]');
 const buttonStop = document.querySelector('[data-stop]');
 const bodyEl = document.querySelector('body');
 let timerId = null;
-
+buttonStop.setAttribute('disabled', true);
 function getRandomHexColor() {
   return `#${Math.floor(Math.random() * 16777215)
     .toString(16)
@@ -20,4 +20,5 @@ buttonStart.addEventListener('click', () => {
 buttonStop.addEventListener('click', () => {
   clearInterval(timerId);
   buttonStart.removeAttribute('disabled');
+  buttonStop.setAttribute('disabled', true);
 });

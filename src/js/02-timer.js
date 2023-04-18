@@ -21,6 +21,7 @@ const options = {
   defaultDate: new Date(),
   minuteIncrement: 1,
   onClose(selectedDates) {
+    buttonStart.disabled = true;
     initData = selectedDates[0].getTime();
     if (initData < currentData) {
       Notify.failure('Please choose a date in the future');
@@ -36,8 +37,7 @@ function onTimerStart() {
   timerId = setInterval(() => {
     let selectData = new Date(input.value).getTime();
     let deltaTime = selectData - Date.now();
-    // console.log(currentData);
-    // console.log(selectData);
+
     dataDays.textContent = addLeadingZero(convertMs(deltaTime).days);
     dataHours.textContent = addLeadingZero(convertMs(deltaTime).hours);
     dataMinutes.textContent = addLeadingZero(convertMs(deltaTime).minutes);
@@ -45,6 +45,7 @@ function onTimerStart() {
 
     if (deltaTime < 1000) {
       clearInterval(timerId);
+      buttonStart.disabled = true;
     }
   }, 1000);
 }
